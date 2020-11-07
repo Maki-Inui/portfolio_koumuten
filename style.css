@@ -157,26 +157,13 @@ li {
 ============================== */
 header {
   height: 78px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
-.contact_top {
-  display: none;
-}
 
 @media screen and (min-width: 769px){
-  .contact_top {
-    float: right;
-    width: 160px;
-    text-align: center;
-    display: block;
-    font-family: 'Noto Sans JP', sans-serif;
-    padding: 26px;
-  }
-
-  .contact_top a {
-    display: block;
-  }
-
   .header-logo {
     margin-left: 30px;
   }
@@ -195,6 +182,7 @@ header {
 
 .header-logo p {
   margin-bottom: 4px;
+  text-align: left;
 }
 
 .address {
@@ -202,36 +190,111 @@ header {
 }
 
 @media screen and (max-width: 770px) {
-  nav {
+  .header-inner > nav {
     display: none;
   }
 }
 
-nav {
+.header-inner > nav {
   float: right;
 }
 
-nav ul li {
+.header-inner > nav ul li {
   float: left;
   font-family: 'Noto Sans JP', sans-serif;
 }
 
-nav ul li a {
+.header-inner > nav ul li a {
   display: block;
   padding: 31px;
   transition: all .3s;
 }
 
-nav ul li a:hover {
+.header-inner > nav ul li:last-child {
+  background-color: #B94047;
+}
+
+.header-inner > nav ul li:last-child a:hover{
+  background-color: #a32e34;
+} 
+
+.header-inner > nav ul li a:hover {
   display: block;
   background-color: #f7f7f7;
 }
 
-.header-right i {
-  font-size: 25px;
-  position :fixed;
-  right: 6px;
-  top: 10px;
+.header-right {
+  margin-left: auto;
+  float: right;
+  padding-right: 16px;
+}
+
+.header-right #open {
+  font-size: 32px;
+  line-height: 64px;
+  cursor: pointer;
+}
+
+.header-right #open.hide {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  padding: 64px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s;
+  z-index: 20;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay #close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.overlay ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.overlay li {
+  margin-top: 24px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .3s, transform .3s;
+}
+
+.overlay.show li {
+  opacity: 1;
+  transform: none;
+}
+
+.overlay.show li:nth-child(1) {
+  transition-delay: .1s;
+}
+
+.overlay.show li:nth-child(2) {
+  transition-delay: .2s;
+}
+
+.overlay.show li:nth-child(3) {
+  transition-delay: .3s;
 }
 
 
@@ -241,8 +304,9 @@ nav ul li a:hover {
 main {
   background: url(images/main01.jpg) no-repeat;
   height: 618px;
-  background-size:cover;
+  background-size: cover;
   opacity: 0.9;
+  z-index: 10;
 }
 
 main .container {
@@ -373,14 +437,12 @@ main > .container h1 {
 
 .works_photos {
   padding-top: 30px;
-  width: 100%;
-  padding-left: 10px;
 }
 
 @media screen and (min-width: 769px) {
   .works_inner {
     width: 1170px;
-    height: 520px;  
+    height: 540px;  
   }
 
   .works_photos {
@@ -396,6 +458,10 @@ main > .container h1 {
   width: 280px;
   height: 320px;
   background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .works_photos p {

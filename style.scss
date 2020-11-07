@@ -1,0 +1,620 @@
+/* ==============================
+    リセットCSS
+============================== */
+
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/* ==============================
+    フロートの解除
+============================== */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* ==============================
+    全体設計
+============================== */
+
+body {
+  margin: 0;
+  font-family: 游明朝, "Yu Mincho", YuMincho, "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "MS P明朝", "MS PMincho", "Sawarabi Mincho", serif;
+  overflow-x: hidden;
+  letter-spacing: 0.05em
+}
+
+a {
+  text-decoration: none;
+  color: #2a2a2a;
+  letter-spacing: 0.05em
+}
+
+li {
+    list-style: none;
+}
+
+/* ==============================
+    ボタン設定
+============================== */
+.btn {
+    background-color: #B94047;
+    font-size: 15px;
+    line-height: 27px;
+    transition: all .3s;
+
+    &:hover {
+      cursor: pointer;
+      background-color:#a32e34;
+    }
+
+}
+
+/* ==============================
+    ヘッダー
+============================== */
+header {
+  height: 78px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+@media screen and (min-width: 769px){
+  .header-logo {
+    margin-left: 30px;
+  }
+
+  .header-right {
+    display: none;
+  }
+}
+
+.header-logo {
+  font-size: 32px;
+  padding-top: 20px;
+  float: left;
+  padding-left: 10px;
+
+  p {
+    margin-bottom: 4px;
+    text-align: left;
+  }
+
+  .address {
+    font-size: 14px;
+  }
+}
+
+
+@media screen and (max-width: 770px) {
+  .header-inner > nav {
+    display: none;
+  }
+}
+
+.header-inner > nav {
+  float: right;
+}
+
+.header-inner > nav ul li {
+  float: left;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.header-inner > nav ul li a {
+  display: block;
+  padding: 31px;
+  transition: all .3s;
+}
+
+.header-inner > nav ul li:last-child {
+  background-color: #B94047;
+}
+
+.header-inner > nav ul li:last-child a:hover{
+  background-color: #a32e34;
+} 
+
+.header-inner > nav ul li a:hover {
+  display: block;
+  background-color: #f7f7f7;
+}
+
+.header-right {
+  margin-left: auto;
+  float: right;
+  padding-right: 16px;
+
+  #open {
+    font-size: 32px;
+    line-height: 64px;
+    cursor: pointer;
+  }
+
+  & .hide {
+    display: none;
+  }
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  padding: 64px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s;
+  z-index: 20;
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 32px;
+    cursor: pointer;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-top: 24px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .3s, transform .3s;
+      }
+    }
+
+    &.show li {
+      opacity: 1;
+      transform: none;
+      transition-delay: .1s;
+    }
+}
+
+/* ==============================
+    メイン
+============================== */
+main {
+  background: url(images/main01.jpg) no-repeat;
+  height: 618px;
+  background-size: cover;
+  opacity: 0.9;
+  z-index: 10;
+
+  .container {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 35px;
+    color: white;
+    opacity: 0.9;
+    padding-top: 500px;
+  }
+}
+
+.wrapper {
+  width: 80%;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: center;
+}
+
+/* ==============================
+    コンセプト
+============================== */
+.concept {
+  margin-top: 50px;
+}
+
+@media screen and (min-width: 769px) {
+  .photos {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .concept-wrapper {
+    width: 940px;
+
+    p {
+      width: 850px;
+    }
+  }
+}
+
+.photos img{
+  width: 232px;
+  height: 170px;
+  transition: all 2;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.concept-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    font-size: 20px;
+    margin-top: 34px;
+    padding-bottom: 20px;;
+    border-bottom: 2px solid lightgrey;
+    display: inline-block;
+    letter-spacing: 0.1em
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+    margin: 0 auto;
+    padding-top: 50px;
+    letter-spacing: 0.05em
+  }
+}
+
+.more {
+  width: 225px;
+  height: 50px;
+  color: white;
+  font-size: 15px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 44px;
+  padding-top: 20px;
+  margin-bottom: 130px;
+}
+
+/* ==============================
+    制作事例
+============================== */
+
+.works {
+  padding-top: 30px;
+}
+
+.works_inner {
+  background-color: #F3F2F2; 
+  margin-bottom: 130px;
+
+  h2 {
+    font-size: 20px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #414141;
+    display: inline-block;
+    letter-spacing: 0.15em;
+  }
+}
+
+.work {
+  width: 280px;
+  height: 320px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  img {
+    width: 280px;
+    height: 164px;
+    transition: all 2;
+  }
+
+  &:hover img {
+    opacity: 0.7;
+  }
+
+  .works_photos {
+    padding-top: 30px;
+
+    p {
+      padding: 20px;
+      }
+    }
+  }
+
+@media screen and (min-width: 769px) {
+  .works_inner {
+    width: 1170px;
+    height: 540px;  
+  }
+
+  .works_photos {
+    max-width: 940px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+/* ==============================
+    採用情報
+============================== */
+
+.recruit {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media screen and (min-width: 769px) {
+  .recruit-wrapper {
+    width: 940px;
+  }
+  .interview {
+    display: flex;
+    justify-content: center;
+  }
+
+  .recruit-photo {
+    padding-right: 30px; 
+
+    img{
+      width: 358px;
+    }
+  }
+}
+
+.recruit-wrapper {
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    font-size: 20px;
+    padding: 20px 0 20px 0;
+    border-bottom: 2px solid #414141;
+    display: inline-block;
+    letter-spacing: 0.15em
+  }
+
+  .recruit-heading p{
+    padding: 20px 0 50px 0;
+  }
+
+  .interview {
+    margin-bottom: 66px;
+  }
+
+  .recruit-photo img{
+    width: 90%;
+  }
+  .recruit-story {
+    padding-left: 30px;
+  }
+}
+
+/* ==============================
+    お問い合わせ
+============================== */
+.contact {
+  width: 80%;
+  padding-bottom: 130px;
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    font-size: 20px;
+    padding-top: 34px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid lightgrey;
+    display: inline-block;
+    letter-spacing: 0.15em
+  }
+
+  h3 {
+    margin-top: 20px;
+    padding-bottom: 50px;
+  }
+
+  .contact-bottom {
+    margin-top: 50px;
+    display: inline-block;
+    padding: 22px;
+
+    a {
+      color: white;
+    }
+  }
+  
+}
+
+@media screen and (min-width: 769px) {
+  .contact {
+    max-width: 940px;
+  }
+
+  .contact-bottom {
+    width: 445px;
+  }
+}
+
+
+/* ==============================
+    フッター
+============================== */
+footer {
+  font-family:Abel, sans-serif;;
+}
+
+
+@media screen and (min-width: 769px) {
+  .footer-wrapper {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .information {
+    display: flex;
+  }
+
+  .footer-c {
+    text-align: right;
+  }
+}
+
+.information {
+  margin-bottom: 50px;
+
+  .footer-logo {
+    font-size: 32px;
+  }
+
+  .address {
+    margin-left: 20px;
+
+    p {
+      padding-bottom: 4px;
+    }
+
+    span {
+      padding-left: 4px;
+    }
+  }
+}
+
+.footer-nav ul li {
+  float: left;
+  font-family: 'Noto Sans JP', sans-serif;
+  margin-bottom: 20px;
+  padding-left: 30px;
+}
+
+.footer-c p {
+  color:  #414141;
+  font-size: 14px;
+}
